@@ -1,24 +1,8 @@
-/* [@bs.module] external lab : Js.Json.t = "./lab.json";
-
-   /* let parseNumValue = json => {
-        let parsed =
-          try (Some(int_of_string(numStr))) {
-          | Failure(_) => None
-          };
-        switch (parsed) {
-        | Some(n) when n >= 2 && n <= 10 => Some(Num(n))
-        | _ => None
-        };
-      }; */
-   let mapOption = (opt, fn) =>
-     switch (opt) {
-     | None => None
-     | Some(value) => Some(fn(value))
-     };
-
-   type keyword = string;
+/* type keyword = string;
 
    type example = string;
+
+   type library = string;
 
    type props = {
      src: option(string),
@@ -131,34 +115,22 @@
      /* let components = mapOption(json: array(componentItem), decodeComponent); */
      let components = json : list(componentItem) =>
        json |> Json.Decode.list(decodeComponent);
-     /* |> Belt.Array.map(_, component => component); */
+     let lab = json =>
+       Json.Decode.{
+         name: field("name", string, json),
+         /* library: field("library", string, json), */
+         layout: field("layout", Json.Decode.array(decodeLayout), json),
+         components:
+           field("components", Json.Decode.list(decodeComponent), json),
+       };
    };
 
-   let x = lab##components;
+   [@bs.module] external lab : Js.Json.t = "./lab.json";
 
-   let components = x |> Decode.components;
+   /* let lab = Decode.lab(lab);
+      let x = lab##components; */
+   let lab = lab |> Decode.lab;
 
-   List.length(components) |> Js.log; /*71*/
+   List.length(lab) |> Js.log; /*71*/
 
-   components |> Js.log;
-
-   /* error on following code
-      [merlin]
-      Error: This expression has type StringMap.t('a) = Map.Make(String).t('a)
-             but an expression was expected of type
-               list(FunWithFunctors.Lab.componentItem)
-
-               [bucklescript]
-      This has type:
-        StringMap.t(componentItem) (defined as Map.Make(String).t(componentItem))
-      But somewhere wanted:
-        list(componentItem)
-      */
-   let getComponentMap = myList : list(componentItem) =>
-     List.fold_left(
-       (map, component) => StringMap.add(component.name, component, map),
-       StringMap.empty,
-       myList,
-     );
-
-   let componentMap = getComponentMap(components); */
+   lab |> Js.log; */
