@@ -1,35 +1,35 @@
 module Decode = {
   open Json.Decode;
   let props = json => {
-    "src": field("src", optional(string)),
-    "w": field("w", float),
+    "src": json |> field("src", optional(string)),
+    "w": json |> field("w", float),
   };
   let layout = json => {
-    "i": field("i", string),
-    "name": field("name", string),
-    "w": field("w", int),
-    "h": field("h", int),
-    "x": field("x", int),
-    "y": field("y", int),
-    "moved": field("y", optional(bool)),
-    "static": field("y", nullable(bool)),
+    "i": json |> field("i", string),
+    "name": json |> field("name", string),
+    "w": json |> field("w", int),
+    "h": json |> field("h", int),
+    "x": json |> field("x", int),
+    "y": json |> field("y", int),
+    "moved": json |> field("y", optional(bool)),
+    "static": json |> field("y", nullable(bool)),
   };
   let style = json => {
-    "display": field("display", string),
-    "maxWidth": field("maxWidth", string),
+    "display": json |> field("display", string),
+    "maxWidth": json |> field("maxWidth", string),
   };
   let component = json => {
-    "name": field("name", string),
-    "type": field("type", string),
-    "props": field("props", props),
-    "style": field("style", style),
-    "examples": field("examples", array(string)),
+    "name": json |> field("name", string),
+    "type": json |> field("type", string),
+    "props": json |> field("props", props),
+    "style": json |> field("style", style),
+    "examples": json |> field("examples", array(string)),
   };
   let lab = json => {
-    "name": field("name", string),
-    "library": field("library", string),
-    "layout": field("layout", array(layout)),
-    "components": field("components", array(component)),
+    "name": json |> field("name", string),
+    "library": json |> field("library", string),
+    "layout": json |> field("layout", array(layout)),
+    "components": json |> field("components", array(component)),
   };
 };
 

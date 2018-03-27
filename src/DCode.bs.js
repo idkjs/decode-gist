@@ -4,103 +4,61 @@
 var LabJson = require("./lab.json");
 var Json_decode = require("@glennsl/bs-json/src/Json_decode.bs.js");
 
-function props() {
+function props(json) {
   return {
-          src: (function (param) {
-              return Json_decode.field("src", (function (param) {
-                            return Json_decode.optional(Json_decode.string, param);
-                          }), param);
-            }),
-          w: (function (param) {
-              return Json_decode.field("w", Json_decode.$$float, param);
-            })
+          src: Json_decode.field("src", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          w: Json_decode.field("w", Json_decode.$$float, json)
         };
 }
 
-function layout() {
+function layout(json) {
   return {
-          i: (function (param) {
-              return Json_decode.field("i", Json_decode.string, param);
-            }),
-          name: (function (param) {
-              return Json_decode.field("name", Json_decode.string, param);
-            }),
-          w: (function (param) {
-              return Json_decode.field("w", Json_decode.$$int, param);
-            }),
-          h: (function (param) {
-              return Json_decode.field("h", Json_decode.$$int, param);
-            }),
-          x: (function (param) {
-              return Json_decode.field("x", Json_decode.$$int, param);
-            }),
-          y: (function (param) {
-              return Json_decode.field("y", Json_decode.$$int, param);
-            }),
-          moved: (function (param) {
-              return Json_decode.field("y", (function (param) {
-                            return Json_decode.optional(Json_decode.bool, param);
-                          }), param);
-            }),
-          static: (function (param) {
-              return Json_decode.field("y", (function (param) {
-                            return Json_decode.nullable(Json_decode.bool, param);
-                          }), param);
-            })
+          i: Json_decode.field("i", Json_decode.string, json),
+          name: Json_decode.field("name", Json_decode.string, json),
+          w: Json_decode.field("w", Json_decode.$$int, json),
+          h: Json_decode.field("h", Json_decode.$$int, json),
+          x: Json_decode.field("x", Json_decode.$$int, json),
+          y: Json_decode.field("y", Json_decode.$$int, json),
+          moved: Json_decode.field("y", (function (param) {
+                  return Json_decode.optional(Json_decode.bool, param);
+                }), json),
+          static: Json_decode.field("y", (function (param) {
+                  return Json_decode.nullable(Json_decode.bool, param);
+                }), json)
         };
 }
 
-function style() {
+function style(json) {
   return {
-          display: (function (param) {
-              return Json_decode.field("display", Json_decode.string, param);
-            }),
-          maxWidth: (function (param) {
-              return Json_decode.field("maxWidth", Json_decode.string, param);
-            })
+          display: Json_decode.field("display", Json_decode.string, json),
+          maxWidth: Json_decode.field("maxWidth", Json_decode.string, json)
         };
 }
 
-function component() {
+function component(json) {
   return {
-          name: (function (param) {
-              return Json_decode.field("name", Json_decode.string, param);
-            }),
-          type: (function (param) {
-              return Json_decode.field("type", Json_decode.string, param);
-            }),
-          props: (function (param) {
-              return Json_decode.field("props", props, param);
-            }),
-          style: (function (param) {
-              return Json_decode.field("style", style, param);
-            }),
-          examples: (function (param) {
-              return Json_decode.field("examples", (function (param) {
-                            return Json_decode.array(Json_decode.string, param);
-                          }), param);
-            })
+          name: Json_decode.field("name", Json_decode.string, json),
+          type: Json_decode.field("type", Json_decode.string, json),
+          props: Json_decode.field("props", props, json),
+          style: Json_decode.field("style", style, json),
+          examples: Json_decode.field("examples", (function (param) {
+                  return Json_decode.array(Json_decode.string, param);
+                }), json)
         };
 }
 
-function lab() {
+function lab(json) {
   return {
-          name: (function (param) {
-              return Json_decode.field("name", Json_decode.string, param);
-            }),
-          library: (function (param) {
-              return Json_decode.field("library", Json_decode.string, param);
-            }),
-          layout: (function (param) {
-              return Json_decode.field("layout", (function (param) {
-                            return Json_decode.array(layout, param);
-                          }), param);
-            }),
-          components: (function (param) {
-              return Json_decode.field("components", (function (param) {
-                            return Json_decode.array(component, param);
-                          }), param);
-            })
+          name: Json_decode.field("name", Json_decode.string, json),
+          library: Json_decode.field("library", Json_decode.string, json),
+          layout: Json_decode.field("layout", (function (param) {
+                  return Json_decode.array(layout, param);
+                }), json),
+          components: Json_decode.field("components", (function (param) {
+                  return Json_decode.array(component, param);
+                }), json)
         };
 }
 
