@@ -4,15 +4,6 @@
 var LabJson = require("./lab.json");
 var Json_decode = require("@glennsl/bs-json/src/Json_decode.bs.js");
 
-function props(json) {
-  return {
-          src: Json_decode.field("src", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
-                }), json),
-          w: Json_decode.field("w", Json_decode.$$float, json)
-        };
-}
-
 function layout(json) {
   return {
           i: Json_decode.field("i", Json_decode.string, json),
@@ -25,15 +16,84 @@ function layout(json) {
                   return Json_decode.optional(Json_decode.bool, param);
                 }), json),
           static: Json_decode.field("y", (function (param) {
-                  return Json_decode.nullable(Json_decode.bool, param);
+                  return Json_decode.optional(Json_decode.bool, param);
                 }), json)
+        };
+}
+
+function hover(json) {
+  return {
+          opacity: Json_decode.field("opacity", Json_decode.$$int, json),
+          transition: Json_decode.field("transition", Json_decode.string, json)
+        };
+}
+
+function active(json) {
+  return {
+          opacity: Json_decode.field("opacity", Json_decode.$$int, json),
+          transition: Json_decode.field("transition", Json_decode.string, json)
+        };
+}
+
+function props(json) {
+  return {
+          src: Json_decode.optional(Json_decode.string, json),
+          w: Json_decode.optional(Json_decode.$$int, json),
+          mt: Json_decode.optional(Json_decode.$$int, json),
+          mb: Json_decode.optional(Json_decode.$$int, json),
+          my: Json_decode.optional(Json_decode.$$int, json),
+          fontSize: Json_decode.optional((function (param) {
+                  return Json_decode.array(Json_decode.$$int, param);
+                }), json),
+          fontWeight: Json_decode.optional(Json_decode.string, json),
+          color: Json_decode.optional(Json_decode.string, json),
+          borderColor: Json_decode.optional(Json_decode.string, json),
+          hover: Json_decode.optional(hover, json),
+          active: Json_decode.optional(active, json)
         };
 }
 
 function style(json) {
   return {
-          display: Json_decode.field("display", Json_decode.string, json),
-          maxWidth: Json_decode.field("maxWidth", Json_decode.string, json)
+          display: Json_decode.field("display", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          maxWidth: Json_decode.field("maxWidth", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          textTransform: Json_decode.field("textTransform", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          letterSpacing: Json_decode.field("letterSpacing", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          lineHeight: Json_decode.field("lineHeight", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          textDecoration: Json_decode.field("textDecoration", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          whiteSpace: Json_decode.field("whiteSpace", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          transition: Json_decode.field("transition", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          opacity: Json_decode.field("opacity", (function (param) {
+                  return Json_decode.optional(Json_decode.$$int, param);
+                }), json),
+          height: Json_decode.field("height", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          width: Json_decode.field("width", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          overflow: Json_decode.field("overflow", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json),
+          textAlign: Json_decode.field("textAlign", (function (param) {
+                  return Json_decode.optional(Json_decode.string, param);
+                }), json)
         };
 }
 
@@ -63,8 +123,10 @@ function lab(json) {
 }
 
 var Decode = /* module */[
-  /* props */props,
   /* layout */layout,
+  /* hover */hover,
+  /* active */active,
+  /* props */props,
   /* style */style,
   /* component */component,
   /* lab */lab
