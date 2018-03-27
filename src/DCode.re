@@ -64,17 +64,7 @@ module Decode = {
 [@bs.module] external lab : Js.Json.t = "./lab.json";
 
 let lab = Decode.lab(lab);
-
-/* Array.length(lab) |> Js.log; */
-/* Belt.Array.forEach(lab, x => Js.log(x)); */
 /* lab |> Js.log; */
-Array.length(lab##components) |> Js.log;
-
-lab##components |> Js.log2("COMPONENTS", _);
+/* Array.length(lab##components) |> Js.log; */
+/* lab##components |> Js.log2("COMPONENTS", _); */
 /* lab##components.examples |> Js.log2("Examples", _); */
-/* [nodemon] starting `node src/DCode.bs.js`
-   { name: [Function: name],
-     library: [Function: library],
-     layout: [Function: layout],
-     components: [Function: components] }
-   [Function: components] */

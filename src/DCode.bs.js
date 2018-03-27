@@ -164,12 +164,6 @@ var Decode = /* module */[
 
 var lab$1 = lab(LabJson);
 
-console.log(lab$1.components.length);
-
-var __x = lab$1.components;
-
-console.log("COMPONENTS", __x);
-
 exports.Decode = Decode;
 exports.lab = lab$1;
 /* lab Not a pure module */
