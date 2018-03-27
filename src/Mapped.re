@@ -15,13 +15,16 @@ let getComponentMap = myList =>
 
 let componentMap = getComponentMap(components);
 
-componentMap
-|> StringMap.iter((name, component) =>
-     Js.log({j|key:$name, val:$component|j})
-   );
+let find = name => StringMap.find(name, componentMap);
+/* works
+   componentMap
+   |> StringMap.iter((name, component) =>
+        Js.log({j|key:$name, val:$component|j})
+      ); */
+/* below works */
+/*
+ let test = StringMap.find("Image", componentMap);
 
-let test = StringMap.find("Image", componentMap);
+ Js.log(test##name);
 
-Js.log(test##name);
-
-Js.log(test##examples);
+ Js.log(test##examples); */

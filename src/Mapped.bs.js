@@ -22,20 +22,13 @@ function getComponentMap(myList) {
 
 var componentMap = getComponentMap(components);
 
-Curry._2(StringMap[/* iter */9], (function (name, component) {
-        console.log("key:" + (String(name) + (", val:" + (String(component) + ""))));
-        return /* () */0;
-      }), componentMap);
-
-var test = Curry._2(StringMap[/* find */21], "Image", componentMap);
-
-console.log(test.name);
-
-console.log(test.examples);
+function find(name) {
+  return Curry._2(StringMap[/* find */21], name, componentMap);
+}
 
 exports.StringMap = StringMap;
 exports.components = components;
 exports.getComponentMap = getComponentMap;
 exports.componentMap = componentMap;
-exports.test = test;
+exports.find = find;
 /* StringMap Not a pure module */
