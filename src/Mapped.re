@@ -15,6 +15,7 @@ let getComponentMap = myList =>
 
 let componentMap = getComponentMap(components);
 
+/* let find = name:VariantsDemo.componentV => StringMap.find(name, componentMap); */
 let find = name => StringMap.find(name, componentMap);
 /* works
    componentMap
