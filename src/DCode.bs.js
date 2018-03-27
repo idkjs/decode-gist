@@ -4,23 +4,6 @@
 var LabJson = require("./lab.json");
 var Json_decode = require("@glennsl/bs-json/src/Json_decode.bs.js");
 
-function layout(json) {
-  return {
-          i: Json_decode.field("i", Json_decode.string, json),
-          name: Json_decode.field("name", Json_decode.string, json),
-          w: Json_decode.field("w", Json_decode.$$int, json),
-          h: Json_decode.field("h", Json_decode.$$int, json),
-          x: Json_decode.field("x", Json_decode.$$int, json),
-          y: Json_decode.field("y", Json_decode.$$int, json),
-          moved: Json_decode.field("y", (function (param) {
-                  return Json_decode.optional(Json_decode.bool, param);
-                }), json),
-          static: Json_decode.field("y", (function (param) {
-                  return Json_decode.optional(Json_decode.bool, param);
-                }), json)
-        };
-}
-
 function hover(json) {
   return {
           opacity: Json_decode.field("opacity", Json_decode.$$int, json),
@@ -37,62 +20,101 @@ function active(json) {
 
 function props(json) {
   return {
-          src: Json_decode.optional(Json_decode.string, json),
-          w: Json_decode.optional(Json_decode.$$int, json),
-          mt: Json_decode.optional(Json_decode.$$int, json),
-          mb: Json_decode.optional(Json_decode.$$int, json),
-          my: Json_decode.optional(Json_decode.$$int, json),
-          fontSize: Json_decode.optional((function (param) {
-                  return Json_decode.array(Json_decode.$$int, param);
+          src: Json_decode.optional((function (param) {
+                  return Json_decode.field("src", Json_decode.string, param);
                 }), json),
-          fontWeight: Json_decode.optional(Json_decode.string, json),
-          color: Json_decode.optional(Json_decode.string, json),
-          borderColor: Json_decode.optional(Json_decode.string, json),
-          hover: Json_decode.optional(hover, json),
-          active: Json_decode.optional(active, json)
+          w: Json_decode.optional((function (param) {
+                  return Json_decode.field("w", Json_decode.$$float, param);
+                }), json),
+          mt: Json_decode.optional((function (param) {
+                  return Json_decode.field("mt", Json_decode.$$float, param);
+                }), json),
+          mb: Json_decode.optional((function (param) {
+                  return Json_decode.field("mb", Json_decode.$$int, param);
+                }), json),
+          my: Json_decode.optional((function (param) {
+                  return Json_decode.field("my", Json_decode.$$int, param);
+                }), json),
+          fontSize: Json_decode.optional((function (param) {
+                  return Json_decode.field("fontSize", (function (param) {
+                                return Json_decode.array(Json_decode.$$int, param);
+                              }), param);
+                }), json),
+          fontWeight: Json_decode.optional((function (param) {
+                  return Json_decode.field("fontWeight", Json_decode.string, param);
+                }), json),
+          color: Json_decode.optional((function (param) {
+                  return Json_decode.field("color", Json_decode.string, param);
+                }), json),
+          borderColor: Json_decode.optional((function (param) {
+                  return Json_decode.field("borderColor", Json_decode.string, param);
+                }), json),
+          hover: Json_decode.optional((function (param) {
+                  return Json_decode.field("hover", hover, param);
+                }), json),
+          active: Json_decode.optional((function (param) {
+                  return Json_decode.field("active", active, param);
+                }), json)
+        };
+}
+
+function layout(json) {
+  return {
+          i: Json_decode.field("i", Json_decode.string, json),
+          name: Json_decode.field("name", Json_decode.string, json),
+          w: Json_decode.field("w", Json_decode.$$int, json),
+          h: Json_decode.field("h", Json_decode.$$int, json),
+          x: Json_decode.field("x", Json_decode.$$int, json),
+          y: Json_decode.field("y", Json_decode.$$int, json),
+          moved: Json_decode.optional((function (param) {
+                  return Json_decode.field("moved", Json_decode.bool, param);
+                }), json),
+          static: Json_decode.optional((function (param) {
+                  return Json_decode.field("static", Json_decode.bool, param);
+                }), json)
         };
 }
 
 function style(json) {
   return {
-          display: Json_decode.field("display", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          display: Json_decode.optional((function (param) {
+                  return Json_decode.field("display", Json_decode.string, param);
                 }), json),
-          maxWidth: Json_decode.field("maxWidth", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          maxWidth: Json_decode.optional((function (param) {
+                  return Json_decode.field("maxWidth", Json_decode.string, param);
                 }), json),
-          textTransform: Json_decode.field("textTransform", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          textTransform: Json_decode.optional((function (param) {
+                  return Json_decode.field("textTransform", Json_decode.string, param);
                 }), json),
-          letterSpacing: Json_decode.field("letterSpacing", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          letterSpacing: Json_decode.optional((function (param) {
+                  return Json_decode.field("letterSpacing", Json_decode.string, param);
                 }), json),
-          lineHeight: Json_decode.field("lineHeight", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          lineHeight: Json_decode.optional((function (param) {
+                  return Json_decode.field("lineHeight", Json_decode.string, param);
                 }), json),
-          textDecoration: Json_decode.field("textDecoration", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          textDecoration: Json_decode.optional((function (param) {
+                  return Json_decode.field("textDecoration", Json_decode.string, param);
                 }), json),
-          whiteSpace: Json_decode.field("whiteSpace", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          whiteSpace: Json_decode.optional((function (param) {
+                  return Json_decode.field("whiteSpace", Json_decode.string, param);
                 }), json),
-          transition: Json_decode.field("transition", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          transition: Json_decode.optional((function (param) {
+                  return Json_decode.field("transition", Json_decode.string, param);
                 }), json),
-          opacity: Json_decode.field("opacity", (function (param) {
-                  return Json_decode.optional(Json_decode.$$int, param);
+          opacity: Json_decode.optional((function (param) {
+                  return Json_decode.field("opacity", Json_decode.$$int, param);
                 }), json),
-          height: Json_decode.field("height", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          height: Json_decode.optional((function (param) {
+                  return Json_decode.field("height", Json_decode.string, param);
                 }), json),
-          width: Json_decode.field("width", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          width: Json_decode.optional((function (param) {
+                  return Json_decode.field("width", Json_decode.string, param);
                 }), json),
-          overflow: Json_decode.field("overflow", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          overflow: Json_decode.optional((function (param) {
+                  return Json_decode.field("overflow", Json_decode.string, param);
                 }), json),
-          textAlign: Json_decode.field("textAlign", (function (param) {
-                  return Json_decode.optional(Json_decode.string, param);
+          textAlign: Json_decode.optional((function (param) {
+                  return Json_decode.field("textAlign", Json_decode.string, param);
                 }), json)
         };
 }
@@ -100,11 +122,19 @@ function style(json) {
 function component(json) {
   return {
           name: Json_decode.field("name", Json_decode.string, json),
-          type: Json_decode.field("type", Json_decode.string, json),
-          props: Json_decode.field("props", props, json),
-          style: Json_decode.field("style", style, json),
-          examples: Json_decode.field("examples", (function (param) {
-                  return Json_decode.array(Json_decode.string, param);
+          type: Json_decode.optional((function (param) {
+                  return Json_decode.field("type", Json_decode.string, param);
+                }), json),
+          props: Json_decode.optional((function (param) {
+                  return Json_decode.field("props", props, param);
+                }), json),
+          style: Json_decode.optional((function (param) {
+                  return Json_decode.field("style", style, param);
+                }), json),
+          examples: Json_decode.optional((function (param) {
+                  return Json_decode.field("examples", (function (param) {
+                                return Json_decode.array(Json_decode.string, param);
+                              }), param);
                 }), json)
         };
 }
@@ -123,10 +153,10 @@ function lab(json) {
 }
 
 var Decode = /* module */[
-  /* layout */layout,
   /* hover */hover,
   /* active */active,
   /* props */props,
+  /* layout */layout,
   /* style */style,
   /* component */component,
   /* lab */lab
@@ -134,9 +164,11 @@ var Decode = /* module */[
 
 var lab$1 = lab(LabJson);
 
-console.log(lab$1);
+console.log(lab$1.components.length);
 
-console.log(lab$1.components);
+var __x = lab$1.components;
+
+console.log("COMPONENTS", __x);
 
 exports.Decode = Decode;
 exports.lab = lab$1;

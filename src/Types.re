@@ -16,6 +16,7 @@ type layout = {
 
 /* type layouts = array(layout); */
 type props = {
+  .
   src: option(string),
   w: option(int),
   mt: option(int),
@@ -29,15 +30,17 @@ type props = {
   active: option(active),
 }
 and hover = {
+  .
   opacity: int,
   transition: string,
 }
 and active = {
+  .
   opacity: int,
   transition: string,
 };
 
-[@bs.deriving jsConverter]
+/* [@bs.deriving jsConverter] */
 type style = {
   display: option(string),
   maxWidth: option(string),
@@ -54,7 +57,7 @@ type style = {
   textAlign: option(string),
 };
 
-[@bs.deriving jsConverter]
+/* [@bs.deriving jsConverter] */
 type component = {
   name: string,
   type_: option(string),
